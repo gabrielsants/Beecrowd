@@ -1,17 +1,17 @@
 data = float(input())
 
-data += 0.001
-bills = (100, 50, 20, 10, 5, 2)
-coins = (1, 0.5, 0.25, 0.1, 0.05, 0.01)
+bills = [100, 50, 20, 10, 5, 2]
+coins = [1, 0.50, 0.25, 0.10, 0.05, 0.01]
 
-print("NOTAS:")
+print('bills:')
+for bill in bills:
+    amount_bills = int(data / bill)
+    print('{} bill(s) de R$ {:.2f}'.format(amount_bills, bill))
+    data -= amount_bills * bill
 
-for i in range(len(bills)):
-    amount_bills = data // bills[i]
-    print("%d nota(s) de R$ %0.2f" %(int(amount_bills), bills[i]))
-    data %= bills[i]
-    print("MOEDAS:")
-    for i in range(len(coins)):
-        amount_coins = data // coins[i]
-        print("%d moeda(s) de R$ %0.2f" %(int(amount_coins), coins[i]))    
-        data %= coins[i]
+print('coins:')
+for coin in coins:
+    data = round(data, 2)
+    amount_coins = int(data / coin)
+    print('{} coin(s) de R$ {:.2f}'.format(amount_coins, coin))
+    data -= amount_coins * coin
